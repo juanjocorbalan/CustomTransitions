@@ -17,21 +17,35 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qx6-tp-gG4">
-                                <rect key="frame" x="239" y="285" width="122" height="30"/>
-                                <state key="normal" title="Slide and Bounce">
+                                <rect key="frame" x="240" y="28" width="121" height="30"/>
+                                <state key="normal" title="Horizontal Sliding">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8Eu-aO-1X4" kind="custom" identifier="SlideAndBounce" id="TD0-1B-oBC"/>
+                                    <action selector="buttonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Dpe-Tj-HEw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-v6-4ZN">
+                                <rect key="frame" x="249" y="66" width="102" height="30"/>
+                                <state key="normal" title="Vertical Sliding">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="On9-sg-5mw"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.79369837470401872" green="1" blue="0.84372847794353589" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Qx6-tp-gG4" secondAttribute="centerX" id="CjK-9r-LwC"/>
-                            <constraint firstAttribute="centerY" secondItem="Qx6-tp-gG4" secondAttribute="centerY" id="WBx-6s-ejW"/>
+                            <constraint firstItem="Qx6-tp-gG4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="Lyi-JL-k9I"/>
+                            <constraint firstAttribute="centerX" secondItem="Qx6-tp-gG4" secondAttribute="centerX" id="YYX-oL-Wpz"/>
+                            <constraint firstItem="hw1-v6-4ZN" firstAttribute="top" secondItem="Qx6-tp-gG4" secondAttribute="bottom" constant="8" id="go7-Rg-MiU"/>
+                            <constraint firstAttribute="centerX" secondItem="hw1-v6-4ZN" secondAttribute="centerX" id="wcv-FS-woD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="8Eu-aO-1X4" kind="custom" identifier="customTransitionSegue" id="yAU-RY-eR4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +68,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CKE-zo-Uw4" kind="unwind" unwindAction="unwindToViewController:" id="Zdw-Nh-9pX"/>
+                                    <segue destination="CKE-zo-Uw4" kind="unwind" unwindAction="unwindToViewController:" id="2HX-fn-pIH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,7 +82,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfL-8X-T6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CKE-zo-Uw4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="407"/>
+            <point key="canvasLocation" x="1200" y="407"/>
         </scene>
     </scenes>
 </document>

@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		DFD9D8681A23800400FB2217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D8671A23800400FB2217 /* AppDelegate.swift */; };
 		DFD9D86A1A23800400FB2217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D8691A23800400FB2217 /* ViewController.swift */; };
-		DFD9D86D1A23800400FB2217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D86B1A23800400FB2217 /* Main.storyboard */; };
 		DFD9D86F1A23800400FB2217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D86E1A23800400FB2217 /* Images.xcassets */; };
 		DFD9D8721A23800400FB2217 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D8701A23800400FB2217 /* LaunchScreen.xib */; };
 		DFD9D87E1A23800400FB2217 /* CustomTransitionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D87D1A23800400FB2217 /* CustomTransitionsTests.swift */; };
-		DFD9D8881A23838600FB2217 /* SlideAndBounceTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D8871A23838600FB2217 /* SlideAndBounceTransitionManager.swift */; };
+		DFD9D8881A23838600FB2217 /* JCCTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D8871A23838600FB2217 /* JCCTransitionManager.swift */; };
+		DFD9D88C1A23B2AF00FB2217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D88B1A23B2AF00FB2217 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +31,13 @@
 		DFD9D8661A23800400FB2217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD9D8671A23800400FB2217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD9D8691A23800400FB2217 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DFD9D86C1A23800400FB2217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFD9D86E1A23800400FB2217 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DFD9D8711A23800400FB2217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		DFD9D8771A23800400FB2217 /* CustomTransitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomTransitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD9D87C1A23800400FB2217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD9D87D1A23800400FB2217 /* CustomTransitionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionsTests.swift; sourceTree = "<group>"; };
-		DFD9D8871A23838600FB2217 /* SlideAndBounceTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideAndBounceTransitionManager.swift; sourceTree = "<group>"; };
+		DFD9D8871A23838600FB2217 /* JCCTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCCTransitionManager.swift; sourceTree = "<group>"; };
+		DFD9D88B1A23B2AF00FB2217 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +81,10 @@
 			children = (
 				DFD9D8671A23800400FB2217 /* AppDelegate.swift */,
 				DFD9D8691A23800400FB2217 /* ViewController.swift */,
-				DFD9D8871A23838600FB2217 /* SlideAndBounceTransitionManager.swift */,
-				DFD9D86B1A23800400FB2217 /* Main.storyboard */,
+				DFD9D8871A23838600FB2217 /* JCCTransitionManager.swift */,
 				DFD9D86E1A23800400FB2217 /* Images.xcassets */,
 				DFD9D8701A23800400FB2217 /* LaunchScreen.xib */,
+				DFD9D88B1A23B2AF00FB2217 /* Main.storyboard */,
 				DFD9D8651A23800400FB2217 /* Supporting Files */,
 			);
 			path = CustomTransitions;
@@ -195,7 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFD9D86D1A23800400FB2217 /* Main.storyboard in Resources */,
+				DFD9D88C1A23B2AF00FB2217 /* Main.storyboard in Resources */,
 				DFD9D8721A23800400FB2217 /* LaunchScreen.xib in Resources */,
 				DFD9D86F1A23800400FB2217 /* Images.xcassets in Resources */,
 			);
@@ -215,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFD9D8881A23838600FB2217 /* SlideAndBounceTransitionManager.swift in Sources */,
+				DFD9D8881A23838600FB2217 /* JCCTransitionManager.swift in Sources */,
 				DFD9D86A1A23800400FB2217 /* ViewController.swift in Sources */,
 				DFD9D8681A23800400FB2217 /* AppDelegate.swift in Sources */,
 			);
@@ -240,14 +240,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DFD9D86B1A23800400FB2217 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DFD9D86C1A23800400FB2217 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DFD9D8701A23800400FB2217 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

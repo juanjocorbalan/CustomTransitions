@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let slideAndBounceTransitionManager = SlideAndBounceTransitionManager()
+    let transitionManager = JCCTransitionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +19,23 @@ class ViewController: UIViewController {
     @IBAction func unwindToViewController (sender: UIStoryboardSegue) {
     }
     
+    @IBAction func buttonTouched(sender: UIButton) {
+        self.transitionManager.duration = 1.0
+
+        if let text = sender.titleLabel?.text {
+            switch text {
+            case "Vertical Sliding":
+                self.transitionManager.animationType = AnimationType.SlideTop
+            default:
+                self.transitionManager.animationType = AnimationType.SlideLeft
+            }
+        }
+        performSegueWithIdentifier("customTransitionSegue", sender: self)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let toViewController = segue.destinationViewController as UIViewController
-        toViewController.transitioningDelegate = self.slideAndBounceTransitionManager
+        toViewController.transitioningDelegate = self.transitionManager
     }
 }
 

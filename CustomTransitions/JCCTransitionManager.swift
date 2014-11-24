@@ -1,5 +1,5 @@
 //
-//  SlideAndBounceTransitionManager.swift
+//  JCCTransitionManager.swift
 //  CustomTransitions
 //
 //  Created by Juanjo Corbalán on 24/11/14.
@@ -8,8 +8,15 @@
 
 import UIKit
 
-class SlideAndBounceTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate  {
+enum AnimationType {
+    case SlideLeft
+    case SlideTop
+}
+
+class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate  {
     
+    var animationType: AnimationType = AnimationType.SlideLeft
+    var duration : NSTimeInterval = 0.5
     var presenting : Bool = true
     
     // MARK: UIViewControllerAnimatedTransitioning protocol methods
@@ -20,14 +27,23 @@ class SlideAndBounceTransitionManager: NSObject, UIViewControllerAnimatedTransit
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
-        let offsetScreenRight = CGAffineTransformMakeTranslation(containerView.frame.width, 0)
-        let offsetScreenLeft = CGAffineTransformMakeTranslation(-containerView.frame.width, 0)
+        var offsetScreenStart: CGAffineTransform
+        var offsetScreenEnd: CGAffineTransform
+
+        switch(self.animationType) {
+        case .SlideTop:
+            offsetScreenStart = CGAffineTransformMakeTranslation(0,containerView.frame.height)
+            offsetScreenEnd = CGAffineTransformMakeTranslation(0,-containerView.frame.height)
+        default:
+            offsetScreenStart = CGAffineTransformMakeTranslation(containerView.frame.width, 0)
+            offsetScreenEnd = CGAffineTransformMakeTranslation(-containerView.frame.width, 0)
+        }
         
         if(self.presenting) {
-            toView.transform = offsetScreenRight
+            toView.transform = offsetScreenStart
         }
         else {
-            toView.transform = offsetScreenLeft
+            toView.transform = offsetScreenEnd
         }
         
         containerView.addSubview(toView)
@@ -37,10 +53,10 @@ class SlideAndBounceTransitionManager: NSObject, UIViewControllerAnimatedTransit
         
         UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: nil, animations: {
             if(self.presenting) {
-                fromView.transform = offsetScreenLeft
+                fromView.transform = offsetScreenEnd
             }
             else {
-                fromView.transform = offsetScreenRight
+                fromView.transform = offsetScreenStart
             }
             toView.transform = CGAffineTransformIdentity
             }, completion: { finished in
@@ -49,7 +65,7 @@ class SlideAndBounceTransitionManager: NSObject, UIViewControllerAnimatedTransit
     }
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        return 0.5
+        return self.duration
     }
     
     // MARK: UIViewControllerTransitioningDelegate protocol methods
