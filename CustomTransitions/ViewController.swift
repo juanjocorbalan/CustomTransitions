@@ -26,6 +26,8 @@ class ViewController: UIViewController {
             switch text {
             case "Vertical Sliding":
                 self.transitionManager.animationType = AnimationType.SlideTop
+            case "Rotation":
+                self.transitionManager.animationType = AnimationType.Rotate
             default:
                 self.transitionManager.animationType = AnimationType.SlideLeft
             }
