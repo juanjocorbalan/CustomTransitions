@@ -43,12 +43,23 @@
                                     <action selector="buttonTouched:" destination="x5A-6p-PRh" eventType="touchUpInside" id="rFv-Vt-xUu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kit-WV-nkZ">
+                                <rect key="frame" x="281" y="142" width="38" height="30"/>
+                                <state key="normal" title="Scale">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTouched:" destination="x5A-6p-PRh" eventType="touchUpInside" id="U2s-rm-F12"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.79369837470401872" green="1" blue="0.84372847794353589" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Qx6-tp-gG4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="Lyi-JL-k9I"/>
                             <constraint firstAttribute="centerX" secondItem="Qx6-tp-gG4" secondAttribute="centerX" id="YYX-oL-Wpz"/>
                             <constraint firstItem="Z9P-hX-NAV" firstAttribute="top" secondItem="hw1-v6-4ZN" secondAttribute="bottom" constant="8" id="Yme-TU-u6c"/>
+                            <constraint firstAttribute="centerX" secondItem="kit-WV-nkZ" secondAttribute="centerX" id="Yph-Dp-GSn"/>
+                            <constraint firstItem="kit-WV-nkZ" firstAttribute="top" secondItem="Z9P-hX-NAV" secondAttribute="bottom" constant="8" id="ZqM-ed-jYM"/>
                             <constraint firstItem="hw1-v6-4ZN" firstAttribute="top" secondItem="Qx6-tp-gG4" secondAttribute="bottom" constant="8" id="go7-Rg-MiU"/>
                             <constraint firstAttribute="centerX" secondItem="Z9P-hX-NAV" secondAttribute="centerX" id="nhO-X0-8c4"/>
                             <constraint firstAttribute="centerX" secondItem="hw1-v6-4ZN" secondAttribute="centerX" id="wcv-FS-woD"/>

@@ -12,6 +12,7 @@ enum AnimationType {
     case SlideLeft
     case SlideTop
     case Rotate
+    case Scale
 }
 
 class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate  {
@@ -28,9 +29,13 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         containerView.addSubview(toView)
-        containerView.addSubview(fromView)
         
-        performSimpleAnimationFromView(fromView, toView: toView, containerView: containerView, transitionContext: transitionContext)
+        switch(self.animationType) {
+        case .Scale:
+            performScaleAnimationFromView(fromView, toView: toView, containerView: containerView, transitionContext: transitionContext)
+        default:
+            performSimpleAnimationFromView(fromView, toView: toView, containerView: containerView, transitionContext: transitionContext)
+        }
     }
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
@@ -80,6 +85,33 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
         UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: nil, animations: {
             fromView.transform = self.presenting ? offsetScreenEnd : offsetScreenStart
             toView.transform = CGAffineTransformIdentity
+            }, completion: { finished in
+                transitionContext.completeTransition(true)
+        })
+    }
+
+    private func performScaleAnimationFromView(fromView: UIView, toView: UIView, containerView: UIView, transitionContext: UIViewControllerContextTransitioning) {
+        var offsetScreenStart = CGAffineTransformMakeScale(0.0, 0.0)
+        
+        toView.transform = offsetScreenStart
+
+        let duration = self.transitionDuration(transitionContext) / 2.0
+        
+        fromView.layer.anchorPoint = CGPoint(x:0.5, y:0.5)
+        fromView.layer.position = CGPoint(x:containerView.frame.width / 2.0, y:containerView.frame.height / 2.0)
+        toView.layer.anchorPoint = CGPoint(x:0.5, y:0.5)
+        toView.layer.position = CGPoint(x:containerView.frame.width / 2.0, y:containerView.frame.height / 2.0)
+        
+        UIView.animateKeyframesWithDuration(duration, delay: 0.0, options: nil, animations: {
+
+            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration:duration, animations: {
+                fromView.transform = offsetScreenStart
+                })
+
+            UIView.addKeyframeWithRelativeStartTime(duration, relativeDuration:duration, animations: {
+                toView.transform = CGAffineTransformIdentity
+                })
+
             }, completion: { finished in
                 transitionContext.completeTransition(true)
         })
