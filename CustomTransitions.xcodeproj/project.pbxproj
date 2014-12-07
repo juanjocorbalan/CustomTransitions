@@ -12,7 +12,7 @@
 		DFD9D86F1A23800400FB2217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D86E1A23800400FB2217 /* Images.xcassets */; };
 		DFD9D8721A23800400FB2217 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D8701A23800400FB2217 /* LaunchScreen.xib */; };
 		DFD9D87E1A23800400FB2217 /* CustomTransitionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D87D1A23800400FB2217 /* CustomTransitionsTests.swift */; };
-		DFD9D8881A23838600FB2217 /* JCCTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D8871A23838600FB2217 /* JCCTransitionManager.swift */; };
+		DFD9D8881A23838600FB2217 /* JCTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9D8871A23838600FB2217 /* JCTransitionManager.swift */; };
 		DFD9D88C1A23B2AF00FB2217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD9D88B1A23B2AF00FB2217 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 		DFD9D8771A23800400FB2217 /* CustomTransitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomTransitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD9D87C1A23800400FB2217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD9D87D1A23800400FB2217 /* CustomTransitionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionsTests.swift; sourceTree = "<group>"; };
-		DFD9D8871A23838600FB2217 /* JCCTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCCTransitionManager.swift; sourceTree = "<group>"; };
+		DFD9D8871A23838600FB2217 /* JCTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCTransitionManager.swift; sourceTree = "<group>"; };
 		DFD9D88B1A23B2AF00FB2217 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +81,7 @@
 			children = (
 				DFD9D8671A23800400FB2217 /* AppDelegate.swift */,
 				DFD9D8691A23800400FB2217 /* ViewController.swift */,
-				DFD9D8871A23838600FB2217 /* JCCTransitionManager.swift */,
+				DFD9D8871A23838600FB2217 /* JCTransitionManager.swift */,
 				DFD9D86E1A23800400FB2217 /* Images.xcassets */,
 				DFD9D8701A23800400FB2217 /* LaunchScreen.xib */,
 				DFD9D88B1A23B2AF00FB2217 /* Main.storyboard */,
@@ -215,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFD9D8881A23838600FB2217 /* JCCTransitionManager.swift in Sources */,
+				DFD9D8881A23838600FB2217 /* JCTransitionManager.swift in Sources */,
 				DFD9D86A1A23800400FB2217 /* ViewController.swift in Sources */,
 				DFD9D8681A23800400FB2217 /* AppDelegate.swift in Sources */,
 			);
@@ -403,6 +403,7 @@
 				DFD9D8831A23800400FB2217 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFD9D8841A23800400FB2217 /* Build configuration list for PBXNativeTarget "CustomTransitionsTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +412,7 @@
 				DFD9D8861A23800400FB2217 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -30,6 +30,8 @@ class ViewController: UIViewController {
                 self.transitionManager.animationType = AnimationType.Rotate
             case "Scale":
                 self.transitionManager.animationType = AnimationType.Scale
+            case "Stack":
+                self.transitionManager.animationType = AnimationType.Stack
             default:
                 self.transitionManager.animationType = AnimationType.SlideLeft
             }
