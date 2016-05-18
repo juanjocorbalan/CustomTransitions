@@ -11,31 +11,22 @@ import UIKit
 class ViewController: UIViewController {
     
     let transitionManager = JCCTransitionManager()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
+    var animationTypes : Dictionary<String, AnimationType>= ["Vertical Sliding" : .SlideTop,
+                                                             "Horizontal Sliding" : .SlideLeft,
+                                                             "Rotation" : .Rotate,
+                                                             "Scale" : .Scale,
+                                                             "Stack" : .Stack]
 
     @IBAction func unwindToViewController (sender: UIStoryboardSegue) {
+   
     }
     
     @IBAction func buttonTouched(sender: UIButton) {
         self.transitionManager.duration = 1.0
 
-        if let text = sender.titleLabel?.text {
-            switch text {
-            case "Vertical Sliding":
-                self.transitionManager.animationType = AnimationType.SlideTop
-            case "Rotation":
-                self.transitionManager.animationType = AnimationType.Rotate
-            case "Scale":
-                self.transitionManager.animationType = AnimationType.Scale
-            case "Stack":
-                self.transitionManager.animationType = AnimationType.Stack
-            default:
-                self.transitionManager.animationType = AnimationType.SlideLeft
-            }
-        }
+        self.transitionManager.animationType = animationTypes[sender.currentTitle!] ?? .SlideLeft
+
         performSegueWithIdentifier("customTransitionSegue", sender: self)
     }
     

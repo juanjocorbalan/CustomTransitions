@@ -27,7 +27,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
     // MARK: UIViewControllerAnimatedTransitioning protocol methods
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView()!
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
@@ -43,7 +43,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
         }
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return self.duration
     }
     
@@ -62,8 +62,6 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
     // MARK: Animations
     
     private func performSimpleAnimationFromView(fromView: UIView, toView: UIView, containerView: UIView, transitionContext: UIViewControllerContextTransitioning) {
-        let π : CGFloat = 3.14159265359
-        
         var offsetScreenStart: CGAffineTransform
         var offsetScreenEnd: CGAffineTransform
         
@@ -74,6 +72,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
             offsetScreenStart = CGAffineTransformMakeTranslation(0,containerView.frame.height)
             offsetScreenEnd = CGAffineTransformMakeTranslation(0,-containerView.frame.height)
         case .Rotate:
+            let π  = CGFloat(M_PI)
             offsetScreenStart = CGAffineTransformMakeRotation(-π/2)
             offsetScreenEnd = CGAffineTransformMakeRotation(π/2)
             fromView.layer.anchorPoint = CGPoint(x:0, y:0)
@@ -89,7 +88,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
         
         let duration = self.transitionDuration(transitionContext)
         
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: [], animations: {
             fromView.transform = self.presenting ? offsetScreenEnd : offsetScreenStart
             toView.transform = CGAffineTransformIdentity
             }, completion: { finished in
@@ -98,7 +97,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
     }
 
     private func performScaleAnimationFromView(fromView: UIView, toView: UIView, containerView: UIView, transitionContext: UIViewControllerContextTransitioning) {
-        var offsetScreenStart = CGAffineTransformMakeScale(0.0, 0.0)
+        let offsetScreenStart = CGAffineTransformMakeScale(0.0, 0.0)
         
         toView.transform = offsetScreenStart
 
@@ -106,7 +105,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
         
         self.resetViewsToContainerFrame(containerView, fromView: fromView, toView: toView)
         
-        UIView.animateKeyframesWithDuration(duration, delay: 0.0, options: nil, animations: {
+        UIView.animateKeyframesWithDuration(duration, delay: 0.0, options: [], animations: {
 
             UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration:duration, animations: {
                 fromView.transform = offsetScreenStart
@@ -123,7 +122,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
     
     private func performStackAnimationFromView(fromView: UIView, toView: UIView, containerView: UIView, transitionContext: UIViewControllerContextTransitioning) {
         let offsetScreenStart = CGAffineTransformMakeTranslation(0,containerView.frame.height)
-        let offsetScreenEnd = CGAffineTransformMakeTranslation(0,-containerView.frame.height)
+        _ = CGAffineTransformMakeTranslation(0,-containerView.frame.height)
         
         let t1 : CATransform3D = self.firstTransform()
         let t2 : CATransform3D = self.secondTransform()
@@ -135,7 +134,7 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
         if(self.presenting) {
             toView.transform = offsetScreenStart
 
-            UIView.animateKeyframesWithDuration(duration, delay: 0.0, options: nil, animations: {
+            UIView.animateKeyframesWithDuration(duration, delay: 0.0, options: [], animations: {
                 
                 UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration:0.5, animations: {
                     fromView.layer.transform = t1
@@ -152,12 +151,12 @@ class JCCTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIV
             toView.layer.transform = t2
             toView.alpha = 0.6;
             
-            UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: nil, animations: {
+            UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: [], animations: {
                 fromView.transform = offsetScreenStart
                 }, completion: nil)
         }
         
-        UIView.animateWithDuration(duration, delay: duration-(0.3*duration), usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: duration-(0.3*duration), usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: [], animations: {
             toView.transform = CGAffineTransformIdentity
             toView.alpha = 1;
             }, completion: { finished in
